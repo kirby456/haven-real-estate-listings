@@ -8,23 +8,25 @@ Serve this folder from a local web server (for example, the **Live Server** exte
 
 ## Deploy to GitHub Pages
 
-Every push to `main` automatically publishes the site using GitHub Pages. After the first deployment, visit the repository's **Settings → Pages** to find its URL.
+Every push to `main` automatically publishes the site using GitHub Pages: [Open Haven](https://kirby456.github.io/haven-real-estate-listings/).
 
 Open the HTTPS site on Android in Chrome, tap **Install app** or **Add to Home screen**, and confirm. On iPhone, open the site in Safari, tap **Share**, then **Add to Home Screen**.
 
-## Link this folder to GitHub
+## Publish changes
 
-With Git installed, open a terminal in this folder and run:
+This folder is connected to the [GitHub repository](https://github.com/kirby456/haven-real-estate-listings). After changing the app, open a terminal here and run:
 
 ```powershell
-git init -b main
 git add .
-git commit -m "Add Haven mobile listings PWA"
-git remote add origin https://github.com/kirby456/haven-real-estate-listings.git
-git push -u origin main
+git commit -m "Describe your changes"
+git push
 ```
 
-Sign in to GitHub if Git Credential Manager prompts you.
+To set up another copy, clone the repository:
+
+```powershell
+git clone https://github.com/kirby456/haven-real-estate-listings.git
+```
 
 ## Demo data
 
