@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f8f7f4">
+    <meta name="description" content="A calm, simple place to keep up with your real estate listings.">
+    <title>Haven — Your listings</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="wordmark" href="#" aria-label="Haven home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M4 13.2 14 5l10 8.2v9.3a.9.9 0 0 1-.9.9h-5.8v-7.1h-6.6v7.1H4.9a.9.9 0 0 1-.9-.9v-9.3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M2.8 13.7 14 4.5l11.2 9.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>haven</span>
+        </a>
+        <div class="topbar-actions">
+          <button class="icon-button install-button" id="install-button" type="button" aria-label="Install Haven" title="Install app">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="profile-button" id="profile-button" type="button" aria-label="Open profile">A</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="welcome-row">
+          <div>
+            <p class="eyebrow" id="welcome-date">YOUR SPACE, AT A GLANCE</p>
+            <h1>Your listings<span class="heading-period">.</span></h1>
+            <p class="welcome-copy">Everything you’re representing, all in one place.</p>
+          </div>
+          <button class="primary-button add-listing-button" id="add-listing-button" type="button">
+            <span aria-hidden="true">+</span> <span>Add listing</span>
+          </button>
+        </section>
+
+        <section class="summary-grid" aria-label="Listing summary">
+          <article class="summary-card summary-total">
+            <div class="summary-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m3.5 10 8.5-7 8.5 7v9.5a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1V10Z"/><path d="m2 10.5 10-8 10 8" /></svg>
+            </div>
+            <div><p class="summary-label">Total listings</p><p class="summary-value" id="total-count">—</p></div>
+            <span class="summary-note" id="active-note">in your portfolio</span>
+          </article>
+          <article class="summary-card summary-active">
+            <div class="summary-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 17.5 9.2 12l3.6 3.5L20 7.5"/><path d="M15.5 7.5H20v4.5"/></svg>
+            </div>
+            <div><p class="summary-label">On the market</p><p class="summary-value" id="active-count">—</p></div>
+            <span class="summary-note"><i class="live-dot"></i> Live now</span>
+          </article>
+          <article class="summary-card summary-value-card">
+            <div class="summary-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v18m5-13.5c0-1.7-1.9-3-5-3s-5 1.3-5 3 1.5 2.6 5 3 5 1.3 5 3-1.9 3-5 3-5-1.3-5-3"/></svg>
+            </div>
+            <div><p class="summary-label">Portfolio value</p><p class="summary-value" id="portfolio-value">—</p></div>
+            <span class="summary-note">asking prices</span>
+          </article>
+        </section>
+
+        <section class="listing-section" aria-labelledby="listing-heading">
+          <div class="listing-header">
+            <div>
+              <div class="section-title-row">
+                <h2 id="listing-heading">All properties</h2>
+                <span class="count-pill" id="visible-count">0</span>
+              </div>
+              <p class="section-subtitle" id="section-subtitle">A little overview of what’s yours.</p>
+            </div>
+            <label class="sort-control">
+              <span class="sr-only">Sort listings</span>
+              <select id="sort-select" aria-label="Sort listings">
+                <option value="recent">Recently added</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="price-asc">Price: low to high</option>
+              </select>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>
+            </label>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-box">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.8"/><path d="m13.2 13.2 4 4"/></svg>
+              <input id="search-input" type="search" placeholder="Search by address or neighborhood" autocomplete="off">
+              <kbd>/</kbd>
+            </label>
+            <div class="filter-row" role="group" aria-label="Filter by listing status">
+              <button class="filter-chip is-selected" data-filter="all" type="button">All <span id="all-filter-count">0</span></button>
+              <button class="filter-chip" data-filter="Active" type="button">Active</button>
+              <button class="filter-chip" data-filter="Pending" type="button">Pending</button>
+              <button class="filter-chip" data-filter="Sold" type="button">Sold</button>
+              <button class="filter-chip saved-filter" data-filter="Saved" type="button">
+                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 15s-6-3.6-6-8a3.3 3.3 0 0 1 6-1.9A3.3 3.3 0 0 1 15 7c0 4.4-6 8-6 8Z"/></svg> Saved
+              </button>
+            </div>
+          </div>
+
+          <div class="listing-grid" id="listing-grid" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <div class="empty-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><circle cx="17.5" cy="17.5" r="10.5"/><path d="m25.5 25.5 8 8M13 17.5h9"/></svg>
+            </div>
+            <h3>No homes found</h3>
+            <p>Try a different search or status filter.</p>
+            <button type="button" class="text-button" id="clear-filters">Clear filters</button>
+          </div>
+        </section>
+      </main>
+
+      <nav class="mobile-nav" aria-label="Main navigation">
+        <button class="nav-item is-current" type="button" data-nav="listings" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10 8.5-7 8.5 7v9.5a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1V10Z"/><path d="m2 10.5 10-8 10 8"/></svg><span>Listings</span>
+        </button>
+        <button class="nav-item" type="button" data-nav="saved">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-8-4.8-8-10.7A4.4 4.4 0 0 1 12 6.8a4.4 4.4 0 0 1 8 2.5C20 15.2 12 20 12 20Z"/></svg><span>Saved</span>
+        </button>
+        <button class="nav-item" type="button" data-nav="profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20v-1.3A5.7 5.7 0 0 1 10.7 13h2.6a5.7 5.7 0 0 1 5.7 5.7V20"/></svg><span>Profile</span>
+        </button>
+      </nav>
+    </div>
+
+    <dialog class="detail-dialog" id="detail-dialog" aria-label="Listing details">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close details">×</button>
+      <div id="detail-content"></div>
+    </dialog>
+
+    <dialog class="form-dialog" id="form-dialog" aria-labelledby="form-title">
+      <div class="form-heading">
+        <div><p class="eyebrow">YOUR PORTFOLIO</p><h2 id="form-title">Add a listing</h2></div>
+        <button class="dialog-close form-close" type="button" data-close-dialog aria-label="Close form">×</button>
+      </div>
+      <form id="listing-form">
+        <label class="form-field full-field">Property address<input name="address" required maxlength="100" placeholder="e.g. 1428 Willow Creek Lane"></label>
+        <label class="form-field">Neighborhood<input name="neighborhood" required maxlength="60" placeholder="e.g. Silver Lake"></label>
+        <label class="form-field">Asking price<input name="price" type="number" min="1" step="1000" required placeholder="850000"></label>
+        <label class="form-field">Bedrooms<input name="beds" type="number" min="0" max="30" step="1" required placeholder="3"></label>
+        <label class="form-field">Bathrooms<input name="baths" type="number" min="0" max="30" step="0.5" required placeholder="2"></label>
+        <label class="form-field full-field">Listing status
+          <select name="status"><option>Active</option><option>Pending</option><option>Sold</option></select>
+        </label>
+        <p class="form-note full-field">This listing will be saved on this device only.</p>
+        <div class="form-actions full-field"><button class="secondary-button" type="button" data-close-dialog>Cancel</button><button class="primary-button" type="submit">Save listing</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="profile-dialog" id="profile-dialog" aria-labelledby="profile-title">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close profile">×</button>
+      <div class="profile-avatar-large">A</div>
+      <p class="eyebrow">YOUR ACCOUNT</p>
+      <h2 id="profile-title">Alex Morgan</h2>
+      <p class="profile-subtitle">Real estate agent · Los Angeles, CA</p>
+      <div class="profile-stats"><span><strong id="profile-listing-count">0</strong> listings</span><span><strong id="profile-saved-count">0</strong> saved</span></div>
+      <p class="profile-note">Your listings are stored on this device. Connect your brokerage account to sync live listings in a future version.</p>
+      <button class="secondary-button profile-done" type="button" data-close-dialog>Done</button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
